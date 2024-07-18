@@ -1,0 +1,469 @@
+```yaml
+# Keycloak Configuration
+
+# Cache configuration
+# cache: ispn # options: ispn (default), local
+# Defines the cache mechanism for high-availability.
+# By default in production mode, an ispn cache is used to create a cluster between multiple server nodes.
+# In development mode, a local cache disables clustering and is intended for development and testing purposes.
+# CLI: --cache
+# Env: KC_CACHE
+
+# cache-config-file:
+# Defines the file from which cache configuration should be loaded.
+# CLI: --cache-config-file
+# Env: KC_CACHE_CONFIG_FILE
+
+# cache-embedded-mtls-enabled: false # options: true, false (default)
+# Encrypts the network communication between Keycloak servers.
+# CLI: --cache-embedded-mtls-enabled
+# Env: KC_CACHE_EMBEDDED_MTLS_ENABLED
+
+# cache-embedded-mtls-key-store-file:
+# The Keystore file path.
+# CLI: --cache-embedded-mtls-key-store-file
+# Env: KC_CACHE_EMBEDDED_MTLS_KEY_STORE_FILE
+
+# cache-embedded-mtls-key-store-password:
+# The password to access the Keystore.
+# CLI: --cache-embedded-mtls-key-store-password
+# Env: KC_CACHE_EMBEDDED_MTLS_KEY_STORE_PASSWORD
+
+# cache-embedded-mtls-trust-store-file:
+# The Truststore file path.
+# CLI: --cache-embedded-mtls-trust-store-file
+# Env: KC_CACHE_EMBEDDED_MTLS_TRUST_STORE_FILE
+
+# cache-embedded-mtls-trust-store-password:
+# The password to access the Truststore.
+# CLI: --cache-embedded-mtls-trust-store-password
+# Env: KC_CACHE_EMBEDDED_MTLS_TRUST_STORE_PASSWORD
+
+# cache-metrics-histograms-enabled: false # options: true, false (default)
+# Enable histograms for metrics for the embedded caches.
+# CLI: --cache-metrics-histograms-enabled
+# Env: KC_CACHE_METRICS_HISTOGRAMS_ENABLED
+
+# cache-remote-host:
+# The hostname of the remote server for the remote store configuration.
+# CLI: --cache-remote-host
+# Env: KC_CACHE_REMOTE_HOST
+
+# cache-remote-password:
+# The password for the authentication to the remote server for the remote store.
+# CLI: --cache-remote-password
+# Env: KC_CACHE_REMOTE_PASSWORD
+
+# cache-remote-port: 11222 # default: 11222
+# The port of the remote server for the remote store configuration.
+# CLI: --cache-remote-port
+# Env: KC_CACHE_REMOTE_PORT
+
+# cache-remote-tls-enabled: true # options: true (default), false
+# Enable TLS support to communicate with a secured remote Infinispan server.
+# CLI: --cache-remote-tls-enabled
+# Env: KC_CACHE_REMOTE_TLS_ENABLED
+
+# cache-remote-username:
+# The username for the authentication to the remote server for the remote store.
+# CLI: --cache-remote-username
+# Env: KC_CACHE_REMOTE_USERNAME
+
+# cache-stack: udp # options: udp (default), tcp, kubernetes, ec2, azure, google
+# Define the default stack to use for cluster communication and node discovery.
+# CLI: --cache-stack
+# Env: KC_CACHE_STACK
+
+# Config configuration
+# config-keystore:
+# Specifies a path to the KeyStore Configuration Source.
+# CLI: --config-keystore
+# Env: KC_CONFIG_KEYSTORE
+
+# config-keystore-password:
+# Specifies a password to the KeyStore Configuration Source.
+# CLI: --config-keystore-password
+# Env: KC_CONFIG_KEYSTORE_PASSWORD
+
+# config-keystore-type: PKCS12 # default: PKCS12
+# Specifies a type of the KeyStore Configuration Source.
+# CLI: --config-keystore-type
+# Env: KC_CONFIG_KEYSTORE_TYPE
+
+# Database configuration
+db: postgres # uncommented option
+# The database vendor.
+# CLI: --db
+# Env: KC_DB
+
+db-url: jdbc:postgresql://localhost:5432/keycloak # uncommented option
+# The full database JDBC URL.
+# CLI: --db-url
+# Env: KC_DB_URL
+
+db-username: keycloak # uncommented option
+# The username of the database user.
+# CLI: --db-username
+# Env: KC_DB_USERNAME
+
+db-password: password # uncommented option
+# The password of the database user.
+# CLI: --db-password
+# Env: KC_DB_PASSWORD
+
+# db-driver:
+# The fully qualified class name of the JDBC driver.
+# CLI: --db-driver
+# Env: KC_DB_DRIVER
+
+# db-pool-initial-size:
+# The initial size of the connection pool.
+# CLI: --db-pool-initial-size
+# Env: KC_DB_POOL_INITIAL_SIZE
+
+# db-pool-max-size: 100 # default: 100
+# The maximum size of the connection pool.
+# CLI: --db-pool-max-size
+# Env: KC_DB_POOL_MAX_SIZE
+
+# db-pool-min-size:
+# The minimal size of the connection pool.
+# CLI: --db-pool-min-size
+# Env: KC_DB_POOL_MIN_SIZE
+
+# db-schema:
+# The database schema to be used.
+# CLI: --db-schema
+# Env: KC_DB_SCHEMA
+
+# db-url-database:
+# Sets the database name of the default JDBC URL of the chosen vendor.
+# CLI: --db-url-database
+# Env: KC_DB_URL_DATABASE
+
+# db-url-host:
+# Sets the hostname of the default JDBC URL of the chosen vendor.
+# CLI: --db-url-host
+# Env: KC_DB_URL_HOST
+
+# db-url-port:
+# Sets the port of the default JDBC URL of the chosen vendor.
+# CLI: --db-url-port
+# Env: KC_DB_URL_PORT
+
+# db-url-properties:
+# Sets the properties of the default JDBC URL of the chosen vendor.
+# CLI: --db-url-properties
+# Env: KC_DB_URL_PROPERTIES
+
+# Transaction configuration
+# transaction-xa-enabled: false # options: true, false (default)
+# If set to true, XA datasources will be used.
+# CLI: --transaction-xa-enabled
+# Env: KC_TRANSACTION_XA_ENABLED
+
+# Feature configuration
+# features: # options: account-api[:v1], account3[:v1], admin-api[:v1], admin-fine-grained-authz[:v1], admin2[:v1], authorization[:v1], ciba[:v1], client-policies[:v1], client-secret-rotation[:v1], client-types[:v1], declarative-ui[:v1], device-flow[:v1], docker[:v1], dpop[:v1], dynamic-scopes[:v1], fips[:v1], hostname[:v1,v2], impersonation[:v1], js-adapter[:v1], kerberos[:v1], login2[:v1], multi-site[:v1], oid4vc-vci[:v1], organization[:v1], par[:v1], passkeys[:v1], persistent-user-sessions[:v1], preview, recovery-codes[:v1], scripts[:v1], step-up-authentication[:v1], token-exchange[:v1], transient-users[:v1], update-email[:v1], web-authn[:v1]
+# Enables a set of one or more features.
+# CLI: --features
+# Env: KC_FEATURES
+
+# features-disabled: # options: account-api, account3, admin-api, admin-fine-grained-authz, admin2, authorization, ciba, client-policies, client-secret-rotation, client-types, declarative-ui, device-flow, docker, dpop, dynamic-scopes, fips, impersonation, js-adapter, kerberos, login2, multi-site, oid4vc-vci, organization, par, passkeys, persistent-user-sessions, preview, recovery-codes, scripts, step-up-authentication, token-exchange, transient-users, update-email, web-authn
+# Disables a set of one or more features.
+# CLI: --features-disabled
+# Env: KC_FEATURES_DISABLED
+
+# Hostname v2 configuration
+hostname: keycloak.example.com # uncommented option
+# Address at which the server is exposed.
+# CLI: --hostname
+# Env: KC_HOSTNAME
+
+# hostname-admin:
+# Address for accessing the administration console.
+# CLI: --hostname-admin
+# Env: KC_HOSTNAME_ADMIN
+
+# hostname-backchannel-dynamic: false # options: true, false (default)
+# Enables dynamic resolving of backchannel URLs, including hostname, scheme, port, and context path.
+# CLI: --hostname-backchannel-dynamic
+# Env: KC_HOSTNAME_BACKCHANNEL_DYNAMIC
+
+# hostname-debug: false # options: true, false (default)
+# Toggles the hostname debug page that is accessible at /realms/master/hostname-debug.
+# CLI: --hostname-debug
+# Env: KC_HOSTNAME_DEBUG
+
+# hostname-strict: true # options: true (default), false
+# Disables dynamically resolving the hostname from request headers.
+# CLI: --hostname-strict
+# Env: KC_HOSTNAME_STRICT
+
+# Health configuration
+# health-enabled: false # options: true, false (default)
+# Enables the health check endpoints.
+# CLI: --health-enabled
+# Env: KC_HEALTH_ENABLED
+
+# health-path: /health # default: /health
+# Path under which health check endpoints are exposed.
+# CLI: --health-path
+# Env: KC_HEALTH_PATH
+
+# health-host: 0.0.0.0 # default: 0.0.0.0
+# Host for the health check server.
+# CLI: --health
+
+# health-port: 8080 # default: 8080
+# Port for the health check server.
+# CLI: --health-port
+# Env: KC_HEALTH_PORT
+
+# health-ssl-certificate-file:
+# File path to the certificate for the health check server.
+# CLI: --health-ssl-certificate-file
+# Env: KC_HEALTH_SSL_CERTIFICATE_FILE
+
+# health-ssl-certificate-key-file:
+# File path to the certificate key for the health check server.
+# CLI: --health-ssl-certificate-key-file
+# Env: KC_HEALTH_SSL_CERTIFICATE_KEY_FILE
+
+# Management configuration
+# management-enabled: false # options: true, false (default)
+# Enables the management endpoints.
+# CLI: --management-enabled
+# Env: KC_MANAGEMENT_ENABLED
+
+# management-path: /management # default: /management
+# Path under which management endpoints are exposed.
+# CLI: --management-path
+# Env: KC_MANAGEMENT_PATH
+
+# management-host: 0.0.0.0 # default: 0.0.0.0
+# Host for the management server.
+# CLI: --management-host
+# Env: KC_MANAGEMENT_HOST
+
+# management-port: 8080 # default: 8080
+# Port for the management server.
+# CLI: --management-port
+# Env: KC_MANAGEMENT_PORT
+
+# management-ssl-certificate-file:
+# File path to the certificate for the management server.
+# CLI: --management-ssl-certificate-file
+# Env: KC_MANAGEMENT_SSL_CERTIFICATE_FILE
+
+# management-ssl-certificate-key-file:
+# File path to the certificate key for the management server.
+# CLI: --management-ssl-certificate-key-file
+# Env: KC_MANAGEMENT_SSL_CERTIFICATE_KEY_FILE
+
+# Metrics configuration
+# metrics-enabled: false # options: true, false (default)
+# Enables the metrics exporter.
+# CLI: --metrics-enabled
+# Env: KC_METRICS_ENABLED
+
+# metrics-path: /metrics # default: /metrics
+# Path under which metrics are exposed.
+# CLI: --metrics-path
+# Env: KC_METRICS_PATH
+
+# metrics-host: 0.0.0.0 # default: 0.0.0.0
+# Host for the metrics server.
+# CLI: --metrics-host
+# Env: KC_METRICS_HOST
+
+# metrics-port: 8080 # default: 8080
+# Port for the metrics server.
+# CLI: --metrics-port
+# Env: KC_METRICS_PORT
+
+# metrics-ssl-certificate-file:
+# File path to the certificate for the metrics server.
+# CLI: --metrics-ssl-certificate-file
+# Env: KC_METRICS_SSL_CERTIFICATE_FILE
+
+# metrics-ssl-certificate-key-file:
+# File path to the certificate key for the metrics server.
+# CLI: --metrics-ssl-certificate-key-file
+# Env: KC_METRICS_SSL_CERTIFICATE_KEY_FILE
+
+# Proxy configuration
+# proxy: none # options: edge, reencrypt, passthrough, none (default)
+# Proxy mode.
+# CLI: --proxy
+# Env: KC_PROXY
+
+# Vault configuration
+# vault:
+# Specifies the vault provider.
+# CLI: --vault
+# Env: KC_VAULT
+
+# vault-dir:
+# Directory where vault secrets are stored.
+# CLI: --vault-dir
+# Env: KC_VAULT_DIR
+
+# vault-aws-access-key-id:
+# AWS access key ID.
+# CLI: --vault-aws-access-key-id
+# Env: KC_VAULT_AWS_ACCESS_KEY_ID
+
+# vault-aws-secret-access-key:
+# AWS secret access key.
+# CLI: --vault-aws-secret-access-key
+# Env: KC_VAULT_AWS_SECRET_ACCESS_KEY
+
+# vault-aws-region:
+# AWS region.
+# CLI: --vault-aws-region
+# Env: KC_VAULT_AWS_REGION
+
+# vault-aws-endpoint:
+# Custom AWS endpoint.
+# CLI: --vault-aws-endpoint
+# Env: KC_VAULT_AWS_ENDPOINT
+
+# vault-aws-secrets-prefix:
+# Prefix for secrets stored in AWS.
+# CLI: --vault-aws-secrets-prefix
+# Env: KC_VAULT_AWS_SECRETS_PREFIX
+
+# Logging configuration
+# log: info # options: info, debug, trace, warn, error
+# Set the root log level.
+# CLI: --log
+# Env: KC_LOG
+
+# log-console-color: true # options: true (default), false
+# Use color for logging to the console.
+# CLI: --log-console-color
+# Env: KC_LOG_CONSOLE_COLOR
+
+# log-console-output: default # options: default (default), json
+# Specifies the log output format for the console.
+# CLI: --log-console-output
+# Env: KC_LOG_CONSOLE_OUTPUT
+
+# log-console-pattern:
+# Specifies a log pattern for console output.
+# CLI: --log-console-pattern
+# Env: KC_LOG_CONSOLE_PATTERN
+
+# log-file:
+# Enable logging to a file.
+# CLI: --log-file
+# Env: KC_LOG_FILE
+
+# log-file-output: default # options: default (default), json
+# Specifies the log output format for the file.
+# CLI: --log-file-output
+# Env: KC_LOG_FILE_OUTPUT
+
+# log-file-pattern:
+# Specifies a log pattern for file output.
+# CLI: --log-file-pattern
+# Env: KC_LOG_FILE_PATTERN
+
+# log-gelf-generate-id: true # options: true (default), false
+# Enable the generation of a unique identifier for each log event.
+# CLI: --log-gelf-generate-id
+# Env: KC_LOG_GELF_GENERATE_ID
+
+# log-gelf-host:
+# Specifies the GELF log target host.
+# CLI: --log-gelf-host
+# Env: KC_LOG_GELF_HOST
+
+# log-gelf-level:
+# Specifies the log level for GELF logging.
+# CLI: --log-gelf-level
+# Env: KC_LOG_GELF_LEVEL
+
+# log-gelf-log-id:
+# Specifies the identifier for the GELF log target.
+# CLI: --log-gelf-log-id
+# Env: KC_LOG_GELF_LOG_ID
+
+# log-gelf-output: json # options: json (default), non-json
+# Specifies the GELF log target format.
+# CLI: --log-gelf-output
+# Env: KC_LOG_GELF_OUTPUT
+
+# log-gelf-port:
+# Specifies the GELF log target port.
+# CLI: --log-gelf-port
+# Env: KC_LOG_GELF_PORT
+
+# log-level:
+# Sets the log level for a category.
+# CLI: --log-level
+# Env: KC_LOG_LEVEL
+
+# Truststore configuration
+# truststore:
+# Specifies the truststore file.
+# CLI: --truststore
+# Env: KC_TRUSTSTORE
+
+# truststore-password:
+# Password for the truststore.
+# CLI: --truststore-password
+# Env: KC_TRUSTSTORE_PASSWORD
+
+# truststore-type: JKS # default: JKS
+# Type of the truststore.
+# CLI: --truststore-type
+# Env: KC_TRUSTSTORE_TYPE
+
+# Security configuration
+# security-admin-token-signature-algorithm:
+# Specifies the algorithm used for signing the admin token.
+# CLI: --security-admin-token-signature-algorithm
+# Env: KC_SECURITY_ADMIN_TOKEN_SIGNATURE_ALGORITHM
+
+# security-admin-token-signature-credential:
+# Specifies the credential used for signing the admin token.
+# CLI: --security-admin-token-signature-credential
+# Env: KC_SECURITY_ADMIN_TOKEN_SIGNATURE_CREDENTIAL
+
+# Export configuration
+# export:
+# Specifies the file to export the configuration.
+# CLI: --export
+# Env: KC_EXPORT
+
+# export-users: false # options: true, false (default)
+# Specifies whether to export users.
+# CLI: --export-users
+# Env: KC_EXPORT_USERS
+
+# export-groups: false # options: true, false (default)
+# Specifies whether to export groups.
+# CLI: --export-groups
+# Env: KC_EXPORT_GROUPS
+
+# export-roles: false # options: true, false (default)
+# Specifies whether to export roles.
+# CLI: --export-roles
+# Env: KC_EXPORT_ROLES
+
+# Import configuration
+# dir:
+# Set the path to a directory where files will be read from.
+# CLI: --dir
+# Env: KC_DIR
+
+# file:
+# Set the path to a file that will be read.
+# CLI: --file
+# Env: KC_FILE
+
+# override: true # options: true (default), false
+# Set if existing data should be overwritten. If set to false, data will be ignored.
+# CLI: --override
+# Env: KC_OVERRIDE
